@@ -24,6 +24,7 @@ public class BFS {
 	}
 	
 	public boolean solve() {
+		long startTime = System.currentTimeMillis();
 		if(initialState == null) {
 			return false;
 		}
@@ -34,6 +35,9 @@ public class BFS {
 			explored.add(currentState.getIntRepresentation());
 			if(utility.goalTest(currentState)) {
 				goalState = currentState;
+				System.out.println("Depth of goal node = "+goalState.getDepth());
+				long endTime = System.currentTimeMillis();
+				System.out.println("Algorithm Running time = "+(endTime-startTime)+" ms");
 				return true;
 			}
 			
@@ -45,6 +49,8 @@ public class BFS {
 				}
 			}
 		}
+		long endTime = System.currentTimeMillis();
+		System.out.println("Algorithm failed with runtime = "+(endTime-startTime)+" ms");
 		return false;
 	}
 	
