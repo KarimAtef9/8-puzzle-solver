@@ -24,6 +24,7 @@ public class AStar {
         return goalState;
     }
 
+    // return the given state in the queue if found, for the given representation (integer state)
     private State searchInFrontier(Iterator<State> iterator, Integer representation) {
         while(iterator.hasNext()){
             if(iterator.next().getIntRepresentation().equals(representation)) {
@@ -33,6 +34,11 @@ public class AStar {
         return null;
     }
 
+    /*
+        applying A* algorithm, returning true if it found a solution & false otherwise
+        h(n) depending on the passed boolean true for Euclidean distance
+        & false for Manhattan distance
+     */
     public boolean solve(boolean euclidean) {
         long startTime = System.currentTimeMillis();
         explored = new HashSet<>();
@@ -44,7 +50,7 @@ public class AStar {
             if(utility.goalTest(currentState)) {
                 goalState = currentState;
                 String method = euclidean ? "Euclidean Distance": "Manhattan Distance";
-                System.out.println(method+" path cost = "+goalState.getCost());
+                System.out.println(method+" path cost = "+getPathCost(goalState));
                 System.out.println("Depth of goal node = "+goalState.getDepth());
                 long endTime = System.currentTimeMillis();
                 System.out.println("Algorithm Running time = "+(endTime-startTime)+" ms");
@@ -60,6 +66,7 @@ public class AStar {
                 if(inFrontier == null && !explored.contains(representation)) {
                     frontier.add(neighbour);
                 } else if (inFrontier != null) {
+                    // if found in the queue we update its cost to the minimum
                     inFrontier.setCost(Math.min(inFrontier.getCost(), neighbour.getCost()));
                 }
             }
@@ -69,4 +76,13 @@ public class AStar {
         return false;
     }
 
+    // return the path cost for the given final state
+    private double getPathCost(State goal) {
+        double sum = 0;
+        while (goal != null) {
+            sum += goal.getCost();
+            goal = goal.getParent();
+        }
+        return sum;
+    }
 }

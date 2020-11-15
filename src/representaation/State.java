@@ -162,6 +162,7 @@ public class State {
 				}
 			}
 		}
+		// f(n) = g(n) + h(n)
 		double cost = this.depth + 1 + distanceSum;
 		return cost;
 	}

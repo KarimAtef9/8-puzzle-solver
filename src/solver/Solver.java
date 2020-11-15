@@ -24,7 +24,7 @@ public class Solver {
 				array[i][j] = scan.nextInt();
 			}
 		}
-		
+		scan.close();
 		State root = new State(array, null, 0);
 		
 //		// testing BFS
@@ -47,8 +47,8 @@ public class Solver {
 		System.out.println(aStarManhattan.solve(false));
 		utility.backtrack(aStarManhattan.getGoalState());
 
-		// 1 2 5 3 4 0 6 7 8	cost = 3
+		// 1 2 5 3 4 0 6 7 8	cost = 12
 		// 5 2 1 7 6 8 0 4 3	infinite loop
-		// 1 2 5 3 4 8 6 0 7	cost = 5
+		// 1 2 5 3 4 8 6 0 7	cost = 33.06 & 35
 	}
 }
