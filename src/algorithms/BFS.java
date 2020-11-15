@@ -37,7 +37,7 @@ public class BFS {
 				goalState = currentState;
 				System.out.println("Depth of goal node = "+goalState.getDepth());
 				long endTime = System.currentTimeMillis();
-				System.out.println("Algorithm Running time = "+(endTime-startTime)+" ms");
+				System.out.println("BFS Running time = "+(endTime-startTime)+" ms");
 				return true;
 			}
 			
@@ -50,7 +50,7 @@ public class BFS {
 			}
 		}
 		long endTime = System.currentTimeMillis();
-		System.out.println("Algorithm failed with runtime = "+(endTime-startTime)+" ms");
+		System.out.println("BFS failed with runtime = "+(endTime-startTime)+" ms");
 		return false;
 	}
 	

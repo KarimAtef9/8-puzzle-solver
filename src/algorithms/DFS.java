@@ -34,7 +34,7 @@ public class DFS {
 				goalState = currentState;
 				System.out.println("Depth of goal node = "+goalState.getDepth());
 				long endTime = System.currentTimeMillis();
-				System.out.println("Algorithm Running time = "+(endTime-startTime)+" ms");
+				System.out.println("DFS Running time = "+(endTime-startTime)+" ms");
 				return true;
 			}
 			ArrayList<State> neighbours = currentState.neighbours(false, false);
@@ -46,7 +46,7 @@ public class DFS {
 			}
 		}
 		long endTime = System.currentTimeMillis();
-		System.out.println("Algorithm failed with runtime = "+(endTime-startTime)+" ms");
+		System.out.println("DFS failed with runtime = "+(endTime-startTime)+" ms");
 		return false;
 	}
 	

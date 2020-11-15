@@ -29,23 +29,27 @@ public class Solver {
 		
 //		// testing BFS
 //		BFS bfs = new BFS(root);
-//		System.out.println(bfs.solve());
-//		utility.backtrack(bfs.getGoalState());
+//		if (bfs.solve())
+//			utility.backtrack(bfs.getGoalState());
+
 		
 //		//testing DFS
 //		DFS dfs = new DFS(root);
-//		System.out.println(dfs.solve());
-//		utility.backtrack(dfs.getGoalState());
+//		if (dfs.solve())
+//			utility.backtrack(dfs.getGoalState());
+
 
 		//testing A* with Euclidean cost
 		AStar aStarEuclidean = new AStar(root);
-		System.out.println(aStarEuclidean.solve(true));
-		utility.backtrack(aStarEuclidean.getGoalState());
+		if (aStarEuclidean.solve(true))
+			utility.backtrack(aStarEuclidean.getGoalState());
+
 
 		//testing A* with Euclidean cost
 		AStar aStarManhattan = new AStar(root);
-		System.out.println(aStarManhattan.solve(false));
-		utility.backtrack(aStarManhattan.getGoalState());
+		if (aStarManhattan.solve(false))
+			utility.backtrack(aStarManhattan.getGoalState());
+
 
 		// 1 2 5 3 4 0 6 7 8	cost = 12
 		// 5 2 1 7 6 8 0 4 3	infinite loop

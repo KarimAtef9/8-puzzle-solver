@@ -6,7 +6,9 @@ import java.util.*;
 
 public class AStar {
     private State initialState;
-    private Set<Integer> explored;
+    // if state found in map then pre-visited,
+    // with state value if in queue & null if not in queue
+    private Map<Integer, State> explored;
     private PriorityQueue<State> frontier;
     Comparator<State> costSorter;
     private Utility utility;
@@ -40,20 +42,20 @@ public class AStar {
         & false for Manhattan distance
      */
     public boolean solve(boolean euclidean) {
+        String method = euclidean ? "Euclidean Distance": "Manhattan Distance";
         long startTime = System.currentTimeMillis();
-        explored = new HashSet<>();
+        explored = new HashMap<>();
         frontier.add(initialState);
         while(!frontier.isEmpty()) {
             State currentState = frontier.poll();
-            explored.add(currentState.getIntRepresentation());
+            explored.put(currentState.getIntRepresentation(), null);
 
             if(utility.goalTest(currentState)) {
                 goalState = currentState;
-                String method = euclidean ? "Euclidean Distance": "Manhattan Distance";
                 System.out.println(method+" path cost = "+getPathCost(goalState));
                 System.out.println("Depth of goal node = "+goalState.getDepth());
                 long endTime = System.currentTimeMillis();
-                System.out.println("Algorithm Running time = "+(endTime-startTime)+" ms");
+                System.out.println("A* Running time = "+(endTime-startTime)+" ms");
                 return true;
             }
 
@@ -61,10 +63,11 @@ public class AStar {
             ArrayList<State> neighbours = currentState.neighbours(true, euclidean);
             for(State neighbour : neighbours) {
                 Integer representation = neighbour.getIntRepresentation();
-                State inFrontier = searchInFrontier(frontier.iterator(), representation);
-                // first time to reach
-                if(inFrontier == null && !explored.contains(representation)) {
+                boolean visited = explored.containsKey(representation) ? true: false;
+                State inFrontier = visited ? explored.get(representation): null;
+                if(!visited) { // first time to reach
                     frontier.add(neighbour);
+                    explored.put(representation, neighbour);
                 } else if (inFrontier != null) {
                     // if found in the queue we update its cost to the minimum
                     inFrontier.setCost(Math.min(inFrontier.getCost(), neighbour.getCost()));
@@ -72,7 +75,7 @@ public class AStar {
             }
         }
         long endTime = System.currentTimeMillis();
-        System.out.println("Algorithm failed with runtime = "+(endTime-startTime)+" ms");
+        System.out.println("A* ("+method+") failed with runtime = "+(endTime-startTime)+" ms");
         return false;
     }
 
