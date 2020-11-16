@@ -1,13 +1,9 @@
 package algorithms;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Set;
 import representaation.State;
-import sun.reflect.generics.visitor.Reifier;
 
 public class BFS extends Parent{
 
@@ -16,12 +12,13 @@ public class BFS extends Parent{
 	public BFS() {
 		super();
 	}
-	
+
+	@Override
 	public boolean solve(State initialState) {
 		if(initialState == null) {
 			return false;
 		}
-		initiallize();
+		initialize();
 		frontier = new LinkedList<State>();
 		frontier.add(initialState);
 		startTimer();

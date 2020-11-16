@@ -23,24 +23,17 @@ public class Parent {
 		return explored;
 	}
 
-
-
 	public int getSearchDepth() {
 		return searchDepth;
 	}
-
-
 
 	protected void setSearchDepth(int searchDepth) {
 		this.searchDepth = searchDepth;
 	}
 
-
-
 	public long getRunningTime() {
 		return runningTime;
 	}
-
 
 	private void setRunningTime(long runningTime) {
 		this.runningTime = runningTime;
@@ -55,7 +48,7 @@ public class Parent {
 	}
 	
 	// initialize containers and variables to start solving 
-	protected void initiallize() {
+	protected void initialize() {
 		explored = new HashSet<Integer>();
 		searchDepth  = 0;
 		runningTime = 0;
@@ -75,11 +68,20 @@ public class Parent {
 	protected State searchInFrontier(Iterator<State> iterator, Integer representation) {
 		while(iterator.hasNext()){
 			State state = iterator.next();
-			if(state.getIntRepresentation() == representation) {
+			if(state.getIntRepresentation().equals(representation)) {
 				return state;
 			}
 		}
 		return null;
 	}
-	
+
+	// to be override in child classes
+	public boolean solve(State root) {
+		return false;
+	}
+
+	// to be override in child classes
+	public boolean solveStar(State root, boolean euclidean) {
+		return false;
+	}
 }

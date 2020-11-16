@@ -1,8 +1,6 @@
 package algorithms;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Stack;
 import representaation.State;
 
@@ -18,7 +16,7 @@ public class DFS extends Parent{
 		if(initialState == null) {
 			return false;
 		}
-		initiallize();
+		initialize();
 		frontier = new Stack<State>();
 		frontier.push(initialState);
 		startTimer();

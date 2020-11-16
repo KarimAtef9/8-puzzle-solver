@@ -1,7 +1,6 @@
 package algorithms;
 
 import representaation.State;
-
 import java.util.*;
 
 public class AStar extends Parent{
@@ -11,7 +10,6 @@ public class AStar extends Parent{
 
     public AStar() {
     	super();
-
     }
 
     /*
@@ -19,11 +17,12 @@ public class AStar extends Parent{
         h(n) depending on the passed boolean true for Euclidean distance
         & false for Manhattan distance
      */
-    public boolean solve(State initialState, boolean euclidean) {
+    @Override
+    public boolean solveStar(State initialState, boolean euclidean) {
 		if(initialState == null) {
 			return false;
 		}
-		initiallize();
+		initialize();
         costSorter = Comparator.comparing(State::getCost);
         // priority queue according to state cost
         frontier = new PriorityQueue<>(costSorter);
