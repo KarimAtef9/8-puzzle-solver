@@ -25,7 +25,8 @@ public class Solver {
 					array[i][j] = scan.nextInt();
 				}
 			}
-			State root = new State(array);
+			State root = new State();
+			root.setMapping(array);
 			if (k == 1) {	// apply BFS
 				Parent bfs = new BFS();
 				run(bfs,"BFS", root, utility);

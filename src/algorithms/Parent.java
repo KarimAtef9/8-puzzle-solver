@@ -2,7 +2,6 @@ package algorithms;
 
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Queue;
 import java.util.Set;
 
 import representaation.State;
@@ -54,8 +53,8 @@ public class Parent {
 	
 	// initialize containers and variables to start solving 
 	protected void initialize() {
-		explored = new HashSet<Integer>();
-		inFrontier = new HashSet<Integer>();
+		explored = new HashSet<>();
+		inFrontier = new HashSet<>();
 		searchDepth  = 0;
 		runningTime = 0;
 		goalState = null;

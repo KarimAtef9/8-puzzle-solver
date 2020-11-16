@@ -1,16 +1,12 @@
 package algorithms;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Set;
 
 import representaation.State;
 
 public class BFS extends Parent{
-	
-
 
 	private Queue<State> frontier;
 
@@ -24,7 +20,7 @@ public class BFS extends Parent{
 			return false;
 		}
 		initialize();
-		frontier = new LinkedList<State>();
+		frontier = new LinkedList<>();
 		frontier.add(initialState);
 		getInFrontier().add(initialState.getIntRepresentation());
 		startTimer();

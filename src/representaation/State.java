@@ -11,8 +11,6 @@ public class State {
 	private int depth;
 	private int intRepresentation;
 
-	
-
 	// constructors
 	public State() {
 		mapping = new Integer[3][3];
@@ -94,7 +92,7 @@ public class State {
 			if (found)
 				break;
 		}
-		ArrayList<State> neighbours = new ArrayList<State>();
+		ArrayList<State> neighbours = new ArrayList<>();
 
 		// check move-right state
 		if (col < 2) {
@@ -184,7 +182,6 @@ public class State {
 			}
 		}
 		// f(n) = g(n) + h(n)
-		double costFunction = state.getCost() + heuristicCost;
-		return costFunction;
+		return state.getCost() + heuristicCost;
 	}
 }
