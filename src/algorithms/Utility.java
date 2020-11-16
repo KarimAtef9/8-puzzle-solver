@@ -9,7 +9,6 @@ public class Utility {
 			print(state);
 			state = state.getParent();
 		} while (state != null);
-		return;
 	}
 	public void print(State state) {
 		for(int row = 0; row < 3; row++) {
@@ -18,7 +17,7 @@ public class Utility {
 			}
 			System.out.println("");
 		}
-		System.out.println("------");
+		System.out.println("-----");
 	}
 	
 	public boolean goalTest(State currentState) {

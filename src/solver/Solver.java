@@ -52,9 +52,9 @@ public class Solver {
 		}
 		scan.close();
 
-		// 1 2 5 3 4 0 6 7 8 cost = 12
-		// 5 2 1 7 6 8 0 4 3 infinite loop
-		// 1 2 5 3 4 8 6 0 7 cost = 33.06 & 35
+		// 1 2 5 3 4 0 6 7 8 cost = 3
+		// 5 2 1 7 6 8 0 4 3 unsolvable
+		// 1 2 5 3 4 8 6 0 7 cost = 5 & 5
 	}
 
 	// running BFS & DFS algorithms & printing the required outputs
@@ -66,7 +66,10 @@ public class Solver {
 			System.out.println(name+" nodes expanded = "+parent.getExplored());
 			utility.backtrack(parent.getGoalState());
 		} else {
+			System.out.println("=====Unsolvable====");
 			System.out.println(name+" failed with run time = "+parent.getRunningTime()+"ms");
+			System.out.println(name+" depth = "+parent.getSearchDepth());
+			System.out.println(name+" nodes expanded size = "+parent.getExplored().size());
 		}
 	}
 	// running A* algorithm & printing the required outputs
@@ -78,7 +81,10 @@ public class Solver {
 			System.out.println(name+" nodes expanded = "+parent.getExplored());
 			utility.backtrack(parent.getGoalState());
 		} else {
+			System.out.println("=====Unsolvable====");
 			System.out.println(name+" failed with run time = "+parent.getRunningTime()+"ms");
+			System.out.println(name+" depth = "+parent.getSearchDepth());
+			System.out.println(name+" nodes expanded size = "+parent.getExplored().size());
 		}
 	}
 }
