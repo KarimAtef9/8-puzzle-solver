@@ -15,16 +15,13 @@ public class Utility {
 			for(int col = 0; col < 3; col++) {
 				System.out.print(state.getMapping()[row][col] + " ");
 			}
-			System.out.println("");
+			System.out.println();
 		}
 		System.out.println("-----");
 	}
 	
 	public boolean goalTest(State currentState) {
-		if(currentState.getIntRepresentation() == 12345678) {
-			return true;
-		}
-		return false;
+		return currentState.getIntRepresentation() == 12345678;
 	}
 
 }
