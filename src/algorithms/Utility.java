@@ -5,10 +5,10 @@ import representaation.State;
 public class Utility {
 	
 	public void backtrack(State state) {
-		do {
-			print(state);
-			state = state.getParent();
-		} while (state != null);
+		if (state == null)
+			return;
+		backtrack(state.getParent());
+		print(state);
 	}
 	public void print(State state) {
 		for(int row = 0; row < 3; row++) {
