@@ -5,10 +5,10 @@ import representaation.State;
 public class Utility {
 	
 	public void backtrack(State state) {
-		if(state.getParent() != null) {
-			backtrack(state.getParent());	
-		}
-		print(state);
+		do {
+			print(state);
+			state = state.getParent();
+		} while (state != null);
 		return;
 	}
 	public void print(State state) {
@@ -17,9 +17,8 @@ public class Utility {
 				System.out.print(state.getMapping()[row][col] + " ");
 			}
 			System.out.println("");
-			
 		}
-		System.out.println("-------------");
+		System.out.println("-------");
 	}
 	
 	public boolean goalTest(State currentState) {
