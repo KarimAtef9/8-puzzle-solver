@@ -113,7 +113,7 @@ public class State {
 		state.setParent(this);
 		state.setCost(this.getCost() + 1);
 		if (computeEstimatedCost)
-			state.setEstimatedCostToGoal(computeEsitimatedCost(state, heuristicCostFunction));
+			state.setEstimatedCostToGoal(computeEstimatedCost(state, heuristicCostFunction));
 		state.setDepth(this.getDepth() + 1);
 		return state;
 	}
@@ -153,7 +153,7 @@ public class State {
 	 * heuristicCost: false compute cost with Manhattan Distance and true compute
 	 * cost with Euclidean Distance
 	 */
-	private double computeEsitimatedCost(State state, boolean heuristicCostFunction) {
+	private double computeEstimatedCost(State state, boolean heuristicCostFunction) {
 		Integer[][] mapping = state.getMapping();
 		double heuristicCost = 0;
 		if (!heuristicCostFunction) {

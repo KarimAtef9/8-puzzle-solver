@@ -12,7 +12,7 @@ public class Solver {
 		Integer[][] array = new Integer[3][3];
 		Scanner scan = new Scanner(System.in);
 		int k = 0;
-		while (k != 4) {
+		while (k != 5) {
 			System.out.println("Select option:\n1) BFS\n2) DFS\n3) A*\n4) All\n5) Exit");
 			k = scan.nextInt();
 			if (k == 5) {
@@ -40,10 +40,10 @@ public class Solver {
 			} else if (k == 4) {
 				Parent bfs = new BFS();
 				run(bfs,"BFS", root, utility);
-				System.out.println("==================================");
+				System.out.println("=============================================");
 				Parent dfs = new DFS();
 				run(dfs,"DFS", root, utility);
-				System.out.println("==================================");
+				System.out.println("=============================================");
 				Parent aStarEuclidean = new AStar();
 				runStar(aStarEuclidean, true,"A* (Euclidean Distance)", root, utility);
 				Parent aStarManhattan = new AStar();

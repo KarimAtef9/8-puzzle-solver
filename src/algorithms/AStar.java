@@ -6,7 +6,7 @@ import java.util.*;
 public class AStar extends Parent{
 
     private PriorityQueue<State> frontier;
-    Comparator<State> costSorter;
+    private Comparator<State> costSorter;
 
     public AStar() {
     	super();

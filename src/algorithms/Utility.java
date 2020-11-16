@@ -18,7 +18,7 @@ public class Utility {
 			}
 			System.out.println("");
 		}
-		System.out.println("-------");
+		System.out.println("------");
 	}
 	
 	public boolean goalTest(State currentState) {
