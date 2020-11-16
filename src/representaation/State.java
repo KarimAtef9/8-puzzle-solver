@@ -9,6 +9,9 @@ public class State {
 	private double cost;
 	private double estimatedCostToGoal;
 	private int depth;
+	private int intRepresentation;
+
+	
 
 	// constructors
 	public State() {
@@ -29,6 +32,7 @@ public class State {
 
 	public void setMapping(Integer[][] state) {
 		this.mapping = state;
+		calculateIntRepresentation();
 	}
 
 	public State getParent() {
@@ -61,6 +65,14 @@ public class State {
 
 	public void setEstimatedCostToGoal(double estimatedCostToGoal) {
 		this.estimatedCostToGoal = estimatedCostToGoal;
+	}
+	
+	public  void setIntRepresentation(int intRepresentation) {
+		this.intRepresentation = intRepresentation;
+	}
+	
+	public int getIntRepresentation() {
+		return intRepresentation;
 	}
 
 	/*
@@ -122,15 +134,14 @@ public class State {
 	 * Integer representation is the sum of each element multiplied by 10 ^ (row * 3
 	 * + col) this representation will be used to index the state in explored set
 	 */
-	public Integer getIntRepresentation() {
-		int representation = 0;
+	public void calculateIntRepresentation() {
 		for (int row = 0; row < 3; row++) {
 			for (int col = 0; col < 3; col++) {
-				representation += mapping[row][col] * Math.pow(10, 8 - (row * 3 + col));
+				this.intRepresentation += mapping[row][col] * Math.pow(10, 8 - (row * 3 + col));
 			}
 		}
-		return representation;
 	}
+
 
 	/*
 	 * A function find a new state when moving 0 from a position of (zeroRow,

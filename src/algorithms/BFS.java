@@ -1,11 +1,16 @@
 package algorithms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Set;
+
 import representaation.State;
 
 public class BFS extends Parent{
+	
+
 
 	private Queue<State> frontier;
 
@@ -21,6 +26,7 @@ public class BFS extends Parent{
 		initialize();
 		frontier = new LinkedList<State>();
 		frontier.add(initialState);
+		getInFrontier().add(initialState.getIntRepresentation());
 		startTimer();
 		while(!frontier.isEmpty()) {
 			State currentState = frontier.remove();
@@ -34,8 +40,9 @@ public class BFS extends Parent{
 			ArrayList<State> neighbours = currentState.neighbours(false, false);
 			for(State neighbour : neighbours) {
 				Integer representation = neighbour.getIntRepresentation();
-				if(searchInFrontier(frontier.iterator(), representation) == null && !explored.contains(representation)) {
+				if(!getInFrontier().contains(representation) && !explored.contains(representation)) {
 					frontier.add(neighbour);
+					getInFrontier().add(representation);
 				}
 			}
 		}

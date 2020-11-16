@@ -27,6 +27,7 @@ public class AStar extends Parent{
         // priority queue according to state cost
         frontier = new PriorityQueue<>(costSorter);
         frontier.add(initialState);
+        getInFrontier().add(initialState.getIntRepresentation());
         startTimer();
         while(!frontier.isEmpty()) {
             State currentState = frontier.poll();
@@ -46,13 +47,15 @@ public class AStar extends Parent{
                 	//already visited
                 	continue;
                 }
-                State frontierState = searchInFrontier(frontier.iterator(), representation);
-                if(frontierState == null) { 
+                boolean existInFrontier = getInFrontier().contains(representation);
+                
+                if(!existInFrontier) { 
                 	// first time to be visited
                 	frontier.add(neighbour);
                 	explored.add(neighbour.getIntRepresentation());
                 }else {
                 	// visited but check if the new path's cost is lower than the current path's cost 
+                	State frontierState = searchInFrontier(frontier.iterator(), representation);
                 	if(neighbour.getCost() < frontierState.getCost()) {
                 		frontier.remove(frontierState);
                 		frontier.add(neighbour);

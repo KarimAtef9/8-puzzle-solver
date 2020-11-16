@@ -9,6 +9,7 @@ import representaation.State;
 
 public class Parent {
 	protected Set<Integer> explored;
+	protected Set<Integer> inFrontier;
 	protected State goalState;
 	protected Utility utility;
 	protected int searchDepth;
@@ -46,15 +47,22 @@ public class Parent {
 	protected void setGoalState(State goalState) {
 		this.goalState = goalState;
 	}
+	protected Set<Integer> getInFrontier() {
+		return inFrontier;
+	}
+
 	
 	// initialize containers and variables to start solving 
 	protected void initialize() {
 		explored = new HashSet<Integer>();
+		inFrontier = new HashSet<Integer>();
 		searchDepth  = 0;
 		runningTime = 0;
 		goalState = null;
 	}
 	
+
+
 	// timer start and stop functions
 	protected void startTimer() {
 		setRunningTime(System.currentTimeMillis());
@@ -68,7 +76,7 @@ public class Parent {
 	protected State searchInFrontier(Iterator<State> iterator, Integer representation) {
 		while(iterator.hasNext()){
 			State state = iterator.next();
-			if(state.getIntRepresentation().equals(representation)) {
+			if(state.getIntRepresentation() == representation) {
 				return state;
 			}
 		}
