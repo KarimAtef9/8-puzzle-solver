@@ -19,6 +19,7 @@ public class DFS extends Parent{
 		initialize();
 		frontier = new Stack<State>();
 		frontier.push(initialState);
+		getInFrontier().add(initialState.getIntRepresentation());
 		startTimer();
 		while(!frontier.isEmpty()) {
 			State currentState = frontier.pop();
@@ -32,8 +33,9 @@ public class DFS extends Parent{
 			ArrayList<State> neighbours = currentState.neighbours(false, false);
 			for(State neighbour : neighbours) {
 				Integer representation = neighbour.getIntRepresentation();
-				if(searchInFrontier(frontier.iterator(), representation) == null && !explored.contains(representation)) {
+				if(!getInFrontier().contains(representation) && !explored.contains(representation)) {
 					frontier.push(neighbour);
+					getInFrontier().add(representation);
 				}
 			}
 		}

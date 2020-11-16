@@ -22,13 +22,10 @@ public class Utility {
 	}
 	
 	public boolean goalTest(State currentState) {
-		for(int row = 0; row < 3; row++) {
-			for(int col = 0; col < 3; col++) {
-				if(currentState.getMapping()[row][col] != row * 3 + col)
-					return false;
-			}
+		if(currentState.getIntRepresentation() == 12345678) {
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 }
