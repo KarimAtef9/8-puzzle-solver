@@ -11,13 +11,14 @@ public class DFS extends Parent{
 	public DFS() {
 		super();
 	}
-	
+
+	@Override
 	public boolean solve(State initialState) {
 		if(initialState == null) {
 			return false;
 		}
 		initialize();
-		frontier = new Stack<State>();
+		frontier = new Stack<>();
 		frontier.push(initialState);
 		getInFrontier().add(initialState.getIntRepresentation());
 		startTimer();
