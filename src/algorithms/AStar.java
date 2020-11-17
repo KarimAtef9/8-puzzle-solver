@@ -23,9 +23,9 @@ public class AStar extends Parent{
 			return false;
 		}
 		initialize();
-        costSorter = Comparator.comparing(State::getCost);
+        costSorter = Comparator.comparing(State::getFOfNCost);
         // priority queue according to state cost
-        frontier = new PriorityQueue<>(costSorter);
+        frontier = new PriorityQueue<State>(costSorter);
         frontier.add(initialState);
         getInFrontier().add(initialState.getIntRepresentation());
         startTimer();

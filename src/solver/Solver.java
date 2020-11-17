@@ -61,11 +61,12 @@ public class Solver {
 	// running BFS & DFS algorithms & printing the required outputs
 	static void run(Parent parent, String name, State root, Utility utility) {
 		if (parent.solve(root)) {
+			//utility.backtrack(parent.getGoalState());
 			System.out.println(name+" running time = "+parent.getRunningTime()+"ms");
 			System.out.println(name+" depth = "+parent.getSearchDepth());
-			System.out.println(name+" cost = "+parent.getSearchDepth());
-			System.out.println(name+" nodes expanded = "+parent.getExplored());
-			utility.backtrack(parent.getGoalState());
+			System.out.println(name+" cost = "+parent.getGoalState().getCost());
+			System.out.println(name+" nodes expanded size= "+parent.getExplored().size());
+			
 		} else {
 			System.out.println("=====Unsolvable====");
 			System.out.println(name+" failed with run time = "+parent.getRunningTime()+"ms");
@@ -76,11 +77,12 @@ public class Solver {
 	// running A* algorithm & printing the required outputs
 	static void runStar(Parent parent, boolean euclidean, String name, State root, Utility utility) {
 		if (parent.solveStar(root, euclidean)) {
+			//utility.backtrack(parent.getGoalState());
 			System.out.println(name+" running time = "+parent.getRunningTime()+"ms");
 			System.out.println(name+" depth = "+parent.getSearchDepth());
-			System.out.println(name+" cost = "+parent.getSearchDepth());
-			System.out.println(name+" nodes expanded = "+parent.getExplored());
-			utility.backtrack(parent.getGoalState());
+			System.out.println(name+" cost = "+parent.getGoalState().getCost());
+			System.out.println(name+" nodes expanded size= "+parent.getExplored().size());
+			
 		} else {
 			System.out.println("=====Unsolvable====");
 			System.out.println(name+" failed with run time = "+parent.getRunningTime()+"ms");

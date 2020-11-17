@@ -10,6 +10,7 @@ public class State {
 	private double estimatedCostToGoal;
 	private int depth;
 	private int intRepresentation;
+	
 
 	// constructors
 	public State() {
@@ -175,13 +176,18 @@ public class State {
 			}
 		} else {
 			for (int row = 0; row < 3; row++) {
+			
 				for (int col = 0; col < 3; col++) {
 					Integer number = mapping[row][col];
 					heuristicCost += Math.sqrt(Math.pow(row - number / 3, 2) + Math.pow(col - number % 3, 2));
 				}
 			}
 		}
-		// f(n) = g(n) + h(n)
-		return state.getCost() + heuristicCost;
+		//  h(n)
+		return heuristicCost;
+	}
+	
+	public double getFOfNCost() {
+		return getCost() + getEstimatedCostToGoal();
 	}
 }
